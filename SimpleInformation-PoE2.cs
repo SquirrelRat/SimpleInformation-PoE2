@@ -71,8 +71,6 @@ namespace SimpleInformationPoE2
         private readonly Queue<int> _pingHistory = new Queue<int>();
         private const int MAX_HISTORY_POINTS = 15;
 
-        private Color ToDrawingColor(Color color) => color;
-
         public float GetEffectiveLevel(int monsterLevel)
         {
             return Convert.ToSingle(-0.03 * Math.Pow(monsterLevel, 2) + 5.17 * monsterLevel - 144.9);
@@ -472,7 +470,7 @@ namespace SimpleInformationPoE2
 
                 if (isPing)
                 {
-                    var pingTextSize = Graphics.DrawText(text, textDrawPoint, ToDrawingColor(colorScheme.Ping));
+                    var pingTextSize = Graphics.DrawText(text, textDrawPoint, colorScheme.Ping);
                     textDrawPoint.X += pingTextSize.X + 5;
 
                     for (int j = 0; j < 4; j++)
@@ -485,7 +483,7 @@ namespace SimpleInformationPoE2
                 }
                 else
                 {
-                    var textSize = Graphics.DrawText(text, textDrawPoint, ToDrawingColor(color));
+                    var textSize = Graphics.DrawText(text, textDrawPoint, color);
                     textDrawPoint.X += textSize.X;
                 }
 
@@ -494,7 +492,7 @@ namespace SimpleInformationPoE2
 
                 if (i < items.Count - 1)
                 {
-                    var separatorSize = Graphics.DrawText(" | ", textDrawPoint, ToDrawingColor(colorScheme.Timer));
+                    var separatorSize = Graphics.DrawText(" | ", textDrawPoint, colorScheme.Timer);
                     textDrawPoint.X += separatorSize.X;
                 }
             }
@@ -589,7 +587,7 @@ namespace SimpleInformationPoE2
                 var textDrawPos = overlayPosition + new Vector2N(15, 5);
                 foreach (var part in tooltipParts)
                 {
-                    var size = Graphics.DrawText(part.text, textDrawPos, ToDrawingColor(part.color));
+                    var size = Graphics.DrawText(part.text, textDrawPos, part.color);
                     textDrawPos.X += size.X;
                 }
             }
@@ -657,13 +655,13 @@ namespace SimpleInformationPoE2
                 ColorSchemeList.Monochrome => new MonochromeColorScheme(),
                 _ => new DefaultColorScheme(),
             };
-            Settings.BackgroundColor.Value = ToDrawingColor(colorScheme.Background);
-            Settings.TimerColor.Value = ToDrawingColor(colorScheme.Timer);
-            Settings.PingColor.Value = ToDrawingColor(colorScheme.Ping);
-            Settings.AreaColor.Value = ToDrawingColor(colorScheme.Area);
-            Settings.TimeLeftColor.Value = ToDrawingColor(colorScheme.TimeLeft);
-            Settings.XphColor.Value = ToDrawingColor(colorScheme.Xph);
-            Settings.XphGetLeftColor.Value = ToDrawingColor(colorScheme.XphGetLeft);
+            Settings.BackgroundColor.Value = colorScheme.Background;
+            Settings.TimerColor.Value = colorScheme.Timer;
+            Settings.PingColor.Value = colorScheme.Ping;
+            Settings.AreaColor.Value = colorScheme.Area;
+            Settings.TimeLeftColor.Value = colorScheme.TimeLeft;
+            Settings.XphColor.Value = colorScheme.Xph;
+            Settings.XphGetLeftColor.Value = colorScheme.XphGetLeft;
         }
 
         private void ResetThemeColors()
@@ -694,13 +692,13 @@ namespace SimpleInformationPoE2
                 ColorSchemeList.Monochrome => new MonochromeColorScheme(),
                 _ => new DefaultColorScheme(),
             };
-            Settings.BackgroundColor.Value = ToDrawingColor(defaultScheme.Background);
-            Settings.TimerColor.Value = ToDrawingColor(defaultScheme.Timer);
-            Settings.PingColor.Value = ToDrawingColor(defaultScheme.Ping);
-            Settings.AreaColor.Value = ToDrawingColor(defaultScheme.Area);
-            Settings.TimeLeftColor.Value = ToDrawingColor(defaultScheme.TimeLeft);
-            Settings.XphColor.Value = ToDrawingColor(defaultScheme.Xph);
-            Settings.XphGetLeftColor.Value = ToDrawingColor(defaultScheme.XphGetLeft);
+            Settings.BackgroundColor.Value = defaultScheme.Background;
+            Settings.TimerColor.Value = defaultScheme.Timer;
+            Settings.PingColor.Value = defaultScheme.Ping;
+            Settings.AreaColor.Value = defaultScheme.Area;
+            Settings.TimeLeftColor.Value = defaultScheme.TimeLeft;
+            Settings.XphColor.Value = defaultScheme.Xph;
+            Settings.XphGetLeftColor.Value = defaultScheme.XphGetLeft;
         }
 
         private string FormatNumber(double num)
@@ -721,3 +719,4 @@ namespace SimpleInformationPoE2
         }
     }
 }
+
